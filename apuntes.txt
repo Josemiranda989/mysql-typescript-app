@@ -39,3 +39,7 @@ DESCRIBE posts;
 
 
 https://www.youtube.com/watch?v=4clEduk6OQM&list=WL&index=39
+
+
+https://www.youtube.com/watch?v=9bO0L1rfkvU
+https://github.com/FaztWeb/typescript-swagger-lowdb

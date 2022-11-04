@@ -38,7 +38,7 @@ const app = express();
 
     app.use(IndexRoutes);
     app.use("/post", PostRoutes);
-    app.use("/docs", swaggerUi.serve, swaggerUi);
+    app.use("/docs", swaggerUi.serve);
   
 
 app.listen(app.get('port'), () =>console.log("Server on port ", app.get('port')));
