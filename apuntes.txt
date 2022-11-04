@@ -1,0 +1,41 @@
+1 npm init -y
+2 npm i typescript -D
+3 Ejecutar a o b
+    a- npx typescript --init 
+    b- npx tsc --init
+4 Crear src/index.ts
+5 npm i express
+6 Configurar index.ts para ejecutar express
+7 npx tsc (ejecutar proyecto)
+8 En tsconfig.json
+    Descomentar outdir y agregar el directorio "./dist"
+9 npm i nodemon -D
+10 Configurar package.json
+    "dev": "nodemon src/index.ts  --exec ts-node"
+11 Crear app.ts y configurar
+12 Instalar y config morgan en app.ts
+    npm i morgan
+    npm i @types/morgan -D (para activar las sugerencias de vs)
+13 Config database 
+    npm i mysql2
+    npm i types/mysql2 -D
+    crear database.ts
+14 Crear base de datos y tabla posts, ingresamos a mysql por consola
+    mysql -u root -p copiar comandos uno a uno.
+
+CREATE DATABASE node_mysql_ts;
+
+CREATE TABLE posts(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title varchar(200) NOT NULL,
+    description TEXT NOT NULL,
+    image_url TEXT,
+    created_at Timestamp DEFAULT CURRENT_TIME
+)
+
+DESCRIBE posts;
+
+15 Continuamos con la config de la pool db en database.ts 
+
+
+https://www.youtube.com/watch?v=4clEduk6OQM&list=WL&index=39
