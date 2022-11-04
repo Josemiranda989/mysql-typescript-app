@@ -1,36 +1,46 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
+
+// Swagger
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from "swagger-jsdoc";
+import {options} from "./swaggerOptions" 
+
 
 // Routes
 import IndexRoutes from "./routes/index.routes";
 import PostRoutes from "./routes/post.routes";
 
-export class App {
-  private app: Application;
+const app = express();
 
-  constructor(private port: number | string) {
-    this.app = express();
-    this.settings();
-    this.middlewares();
-    this.routes();
-  }
 
-  settings() {
-    this.app.set("port", this.port || process.env.PORT || 3000);
-  }
 
-  middlewares() {
-      this.app.use(morgan("dev"));
-      this.app.use(express.json());
-  }
+    
+    app.settings();
 
-  routes() {
-    this.app.use(IndexRoutes);
-    this.app.use('/post', PostRoutes);
-  }
+    app.routes();
+    const specs = swaggerJSDoc(options);
+  
 
-  async listen() {
-    await this.app.listen(this.port);
-    console.log("Server on port ", this.port);
-  }
-}
+/*   */
+
+
+    app.set("port", process.env.PORT || 3000);
+
+
+
+    app.use(morgan("dev"));
+    app.use(express.json());
+    app.use(cors());
+
+
+
+    app.use(IndexRoutes);
+    app.use("/post", PostRoutes);
+    app.use("/docs", swaggerUi.serve, swaggerUi);
+  
+
+app.listen(app.get('port'), () =>console.log("Server on port ", app.get('port')));
+
+export default app;
