@@ -1,14 +1,16 @@
+import app  from './app'
+
 export const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Posts API",
+      title: "Posts node_mysql_ts",
       version: "1.0.0",
-      description: "A simple API",
+      description: "A simple express library API with mysql and typescript",
     },
     servers: [
       {
-        url: "http://localhost:4000",
+        url: `http://localhost:${process.env.PORT || 3000}`,
       },
     ],
     },
